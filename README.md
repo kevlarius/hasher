@@ -13,6 +13,14 @@ of the passed file by using one tool.
 
 ## Usage
 
+Usage: hasher.exe `MODE` `PATH` `[-v]`
+Calculates hash sum for passed PATH with MODE.
+Available modes: `[sha1 sha256 sha512 crc32 md5]`
+
+Specifying `-v` option makes output verbose (statistic about calculation time, etc.)
+
+### Examples:
+
 Linux:
 > $ ./hasher sha256 my_file.bin
 > 5d3a9c7c1f19d4166a1c41786fc678663719b9aa034f597ea234972357e55b90
@@ -21,11 +29,16 @@ Windows:
 > PS C:\Users\User\hasher> .\hasher.exe sha256 some_file.bin
 4f63be23f5338be197eae4fccc078fe90ad5381e2f4cc9f8c78efb9edad321d0
 
+
+
 ## Build executable
 
 To build this tool from sources you need:
 1. Install Go
 2. Clone this repository
 3. Go to **hasher** directory
-4. Run go build command
+4. Run `go build` command
 
+## Testing
+
+You can run tests with command: `go test`

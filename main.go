@@ -67,7 +67,12 @@ func timeIt(calcFunc func(fileObj io.Reader, mode string) []byte, fileObj io.Rea
 
 func calculate(path string, mode string, verbose bool) {
 	fileObj, err := os.Open(path)
-	defer fileObj.Close()
+	defer func(fileObj *os.File) {
+		err := fileObj.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(fileObj)
 
 	if err != nil {
 		fmt.Printf("Error occurred when opening '%s': %s\n", path, err)
